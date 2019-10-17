@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2019 at 04:29 AM
+-- Generation Time: Oct 17, 2019 at 07:10 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -36,6 +36,34 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `guru`
+--
+
+CREATE TABLE `guru` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `umur` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `guru`
+--
+
+INSERT INTO `guru` (`id`, `nama`, `umur`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2, 'Fitria Gilda Hastuti S.Pd', 40, NULL, NULL, NULL),
+(3, 'Ana Mayasari S.Gz', 34, NULL, NULL, NULL),
+(4, 'Cemeti Gunarto', 33, NULL, NULL, NULL),
+(5, 'Gangsa Samosir', 41, NULL, NULL, NULL),
+(6, 'Salwa Wastuti', 44, NULL, NULL, NULL),
+(7, 'Cici Oliva Puspita', 37, NULL, NULL, NULL),
+(8, 'Dartono Kusumo', 36, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -105,6 +133,63 @@ INSERT INTO `pegawai` (`id`, `nama`, `alamat`, `created_at`, `updated_at`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pengguna`
+--
+
+CREATE TABLE `pengguna` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pengguna`
+--
+
+INSERT INTO `pengguna` (`id`, `nama`, `created_at`, `updated_at`) VALUES
+(1, 'Padmi Kamila Hassanah S.Farm', NULL, NULL),
+(2, 'Julia Oktaviani', NULL, NULL),
+(3, 'Darmana Sitompul', NULL, NULL),
+(4, 'Naradi Nainggolan', NULL, NULL),
+(5, 'Tedi Winarno', NULL, NULL),
+(6, 'Ulya Yani Permata S.Pt', NULL, NULL),
+(7, 'Maida Uyainah', NULL, NULL),
+(8, 'Putri Dian Nasyidah M.Pd', NULL, NULL),
+(9, 'Lantar Uwais', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `telepon`
+--
+
+CREATE TABLE `telepon` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nomor_telepon` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pengguna_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `telepon`
+--
+
+INSERT INTO `telepon` (`id`, `nomor_telepon`, `pengguna_id`, `created_at`, `updated_at`) VALUES
+(1, '(+62) 878 0989 834', 1, NULL, NULL),
+(2, '(+62) 509 9868 0557', 2, NULL, NULL),
+(3, '023 9503 4379', 3, NULL, NULL),
+(4, '(+62) 24 1120 052', 4, NULL, NULL),
+(5, '0535 3676 2454', 5, NULL, NULL),
+(6, '0614 0945 4128', 6, NULL, NULL),
+(7, '0460 8541 5478', 7, NULL, NULL),
+(8, '(+62) 713 5497 976', 8, NULL, NULL),
+(9, '(+62) 653 4057 294', 9, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -130,6 +215,12 @@ ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `guru`
+--
+ALTER TABLE `guru`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -145,6 +236,18 @@ ALTER TABLE `password_resets`
 -- Indexes for table `pegawai`
 --
 ALTER TABLE `pegawai`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pengguna`
+--
+ALTER TABLE `pengguna`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `telepon`
+--
+ALTER TABLE `telepon`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -165,6 +268,12 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `guru`
+--
+ALTER TABLE `guru`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -175,6 +284,18 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `pegawai`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `pengguna`
+--
+ALTER TABLE `pengguna`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `telepon`
+--
+ALTER TABLE `telepon`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
